@@ -80,6 +80,12 @@ body{
     height: 35px;
 }
 
+#addRoast-selection{
+    width: 100%;
+    text-align: center;
+    height: 35px;
+}
+
 #searchbar{
     width: 100%;
     text-align: center;

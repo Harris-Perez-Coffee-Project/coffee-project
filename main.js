@@ -16,13 +16,15 @@ function renderCoffees(coffees) {
 
 // JavaScript code
 function searchCoffees() {
-    let input = document.getElementById('searchbar').value
+    let input = document.getElementById('searchbar').value.toLowerCase()
     input = input.toLowerCase();
     let x = document.getElementsByClassName('coffee');
 
     for (let i = 0; i < x.length; i++) {
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
             x[i].style.display = "none";
+        }else {
+            x[i].style.display = "inline-block"
         }
     }
 
@@ -39,6 +41,14 @@ function updateCoffees(e) {
         }
     });
     container.innerHTML = renderCoffees(filteredCoffees);
+}
+function addCoffee(e) {
+    e.preventDefault();
+    let addRoast = {id: coffees.length + 1, name: addBar.value, roast: addRoastSelection.value};
+    coffees.push(addRoast);
+
+    container.innerHTML = renderCoffees(coffees);
+    window.localStorage
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -61,7 +71,10 @@ let coffees = [
 
 let container = document.querySelector('#container');
 let submitButton = document.querySelector('#submit');
+let addBtn = document.querySelector("#addBtn")
 let roastSelection = document.querySelector('#roast-selection');
+let addBar = document.querySelector("#addBar")
+let addRoastSelection = document.querySelector("#addRoast-selection");
 
 //This changes the color of the roast(based on strength) on window load.
 let roastColor;
@@ -82,3 +95,4 @@ window.onload = (event) => {
 container.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+addBtn.addEventListener('click', addCoffee);
