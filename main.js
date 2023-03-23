@@ -43,6 +43,17 @@ function updateCoffees(e) {
         }
     });
     container.innerHTML = renderCoffees(filteredCoffees);
+    roastColor = document.querySelectorAll(".coffeeRoast")
+
+    roastColor.forEach( (element) => {
+        if(element.innerHTML === 'dark'){
+            element.style.color = "#7d4820"
+        }else if (element.innerHTML === 'medium'){
+            element.style.color = "#af6d35"
+        }else{
+            element.style.color = "#efc49e"
+        }
+    })
 }
 function addCoffee(e) {
     e.preventDefault();
@@ -50,7 +61,17 @@ function addCoffee(e) {
     coffees.push(addRoast);
 
     container.innerHTML = renderCoffees(coffees);
-    window.localStorage
+    roastColor = document.querySelectorAll(".coffeeRoast")
+
+    roastColor.forEach( (element) => {
+        if(element.innerHTML === 'dark'){
+            element.style.color = "#7d4820"
+        }else if (element.innerHTML === 'medium'){
+            element.style.color = "#af6d35"
+        }else{
+            element.style.color = "#efc49e"
+        }
+    })
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
