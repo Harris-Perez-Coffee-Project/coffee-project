@@ -24,7 +24,7 @@ function searchCoffees() {
         if (!x[i].innerHTML.toLowerCase().includes(input)) {
             x[i].style.display = "none";
         }else {
-            x[i].style.color = "white"
+            x[i].style.display = "inline-block"
         }
     }
 
@@ -48,6 +48,7 @@ function addCoffee(e) {
     coffees.push(addRoast);
 
     container.innerHTML = renderCoffees(coffees);
+    window.localStorage
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
