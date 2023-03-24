@@ -72,6 +72,7 @@ function addCoffee(e) {
             element.style.color = "#efc49e"
         }
     })
+    addLocalStorage(coffees)
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -102,6 +103,8 @@ let addRoastSelection = document.querySelector("#addRoast-selection");
 //This changes the color of the roast(based on strength) on window load.
 let roastColor;
 window.onload = (event) => {
+    getLocalStorage()
+    container.innerHTML = renderCoffees(coffees);
     roastColor = document.querySelectorAll(".coffeeRoast")
 
     roastColor.forEach( (element) => {
@@ -115,7 +118,20 @@ window.onload = (event) => {
     })
 };
 
-container.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
 addBtn.addEventListener('click', addCoffee);
+
+
+function addLocalStorage(coffees){
+    localStorage.setItem("coffees", JSON.stringify(coffees));
+    renderCoffees(coffees)
+}
+
+function getLocalStorage(){
+    const reference = localStorage.getItem('coffees');
+    if (reference){
+        coffees = JSON.parse(reference);
+        renderCoffees(coffees);
+    }
+}
